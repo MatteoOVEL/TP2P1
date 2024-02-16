@@ -25,14 +25,13 @@ namespace TP2P1.Controllers.Tests
             SeriesDBContext context = new SeriesDBContext(builder.Options);
             controller = new SeriesController(context);
 
-           
+
 
         }
 
         [TestMethod()]
         public void GetSeries_SuccessfulTest()
         {
-            // Arrange
             var expectedSeries = new List<Serie>
             {
                 new Serie { Serieid = 1, Titre = "Series 1", Resume = "Description 1" },
@@ -44,13 +43,39 @@ namespace TP2P1.Controllers.Tests
                 controller.PostSerie(serie);
             }
 
-            // Act
+
             var result = controller.GetSeries();
 
 
 
         }
 
+        [TestMethod()]
+        public void PutSerieTest()
+        {
+            var expectedSeries = new List<Serie>
+            {
+                new Serie { Serieid = 1, Titre = "Series 1", Resume = "Description 1" },
+                new Serie { Serieid = 2, Titre = "Series 2", Resume = "Description 2" },
+                new Serie { Serieid = 3, Titre = "Series 3", Resume = "Description 3" }
+            };
+            foreach (var serie in expectedSeries)
+            {
+                controller.PutSerie(serie.Serieid, serie);
+            }
+        }
 
+        [TestMethod()]
+        public void DeleteSerie_FailingTest()
+
+        {
+
+            var serieToDelete = new Serie { Serieid = 1, Titre = "Series 1", Resume = "Description 1" };
+            controller.PostSerie(serieToDelete);
+
+
+            controller.DeleteSerie(2);
+
+        }
     }
 }

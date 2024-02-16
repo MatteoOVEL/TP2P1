@@ -74,7 +74,7 @@ namespace TP2P1.Controllers.Tests
             controller.PostSerie(serieToDelete);
 
 
-            controller.DeleteSerie(2);
+            controller.DeleteSerie(2);  
 
         }
     }

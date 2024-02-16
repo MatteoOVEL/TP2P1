@@ -69,11 +69,8 @@ namespace TP2P1.Controllers.Tests
         public void DeleteSerie_FailingTest()
 
         {
-
             var serieToDelete = new Serie { Serieid = 1, Titre = "Series 1", Resume = "Description 1" };
             controller.PostSerie(serieToDelete);
-
-
             controller.DeleteSerie(2);  
 
         }
